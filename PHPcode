@@ -1,0 +1,23 @@
+<?php
+
+$con = mysqli_connect("localhost","farmos","farmosv2@","farmos");
+
+mysqli_set_charset($con, "utf8");
+
+$res = mysqli_query($con, "select round(nvalue,2) from current_observations where data_id = 10002301 union select round(nvalue,2) from current_observations where data_id = 10002201");
+
+$result = array();
+
+
+while($row = mysqli_fetch_array($res)){
+
+        array_push($result,
+          array('dat'=>$row[0]
+        ));
+}
+
+echo json_encode(array("result"=>$result));
+
+mysqli_close($con);
+
+?>
