@@ -1,14 +1,9 @@
 package com.example.phpmysql1;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -23,7 +18,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class MainActivity extends Activity {
 
@@ -43,11 +37,12 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         list = (ListView) findViewById(R.id.listView);
-        irsList = new ArrayList<HashMap<String, String>>();
-        getData("http://192.168.1.41/data.php");
+        irsList = new ArrayList<>();
+        getData("http://192.168.1.113/data.php");
 
 
     }
+
 
     protected void showList() {
         try {
@@ -59,7 +54,7 @@ public class MainActivity extends Activity {
                 String dat = c.getString(TAG_DAT);
 
 
-                HashMap<String, String> irs = new HashMap<String, String>();
+                HashMap<String, String> irs = new HashMap<>();
 
                 irs.put(TAG_DAT, dat);
 
@@ -87,7 +82,7 @@ public class MainActivity extends Activity {
 
                 String uri = params[0];
 
-                BufferedReader bufferedReader = null;
+                BufferedReader bufferedReader;
                 try {
                     URL url = new URL(uri);
                     HttpURLConnection con = (HttpURLConnection) url.openConnection();
