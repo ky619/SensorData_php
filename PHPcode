@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect("localhost","farmos","farmosv2@","farmos");
+$con = mysqli_connect("localhost","ID","PW","DB");
 
 mysqli_set_charset($con, "utf8");
 
